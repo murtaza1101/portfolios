@@ -1,0 +1,97 @@
+# Logfile created on 2021-02-17 00:21:04 +0500 by logger.rb/66358
+[2021-02-17T00:21:03 (process) #21044][INFO] appsignal: Loading Rails (6.0.3.5) integration
+[2021-02-17T00:21:04 (process) #21044][ERROR] appsignal: Push API key not set after loading config
+[2021-02-17T00:21:04 (process) #21044][ERROR] Not starting, no valid config for this environment
+[2021-02-17T00:21:20 (process) #21146][ERROR] appsignal: Push API key not set after loading config
+[2021-02-17T00:21:49 (process) #21146][INFO] appsignal: Starting AppSignal 2.11.0 (/home/clicktechlabs/.rvm/gems/ruby-2.6.3/bin/appsignal, Ruby 2.6.3, x86_64-linux)
+[2021-02-17T00:21:49 (process) #21146][INFO] appsignal: Installing action_cable hook
+[2021-02-17T00:21:49 (process) #21146][INFO] appsignal: Installing active_job hook
+[2021-02-17T00:21:49 (process) #21146][INFO] appsignal: Installing active_support_notifications hook
+[2021-02-17T00:21:49 (process) #21146][INFO] appsignal: Installing net_http hook
+[2021-02-17T00:21:49 (process) #21146][INFO] appsignal: Installing puma hook
+[2021-02-17T00:21:49 (process) #21146][INFO] appsignal: Installing redis hook
+[2021-02-17T00:21:49 (process) #21146][INFO] appsignal: Installing sidekiq hook
+[2021-02-17T00:21:49 (agent) #21169][Info] Started appsignal-agent c8f8185 (as 1000/1000) Config { local_env: {}, active: true, agent_standalone: false, running_in_container: false, app_path: Some("/home/clicktechlabs/workspace/portfolios"), agent_path: Some("/home/clicktechlabs/.rvm/gems/ruby-2.6.3/gems/appsignal-2.11.0/ext"), debug_logging: false, log: File, log_file_path: Some("/home/clicktechlabs/workspace/portfolios/log/appsignal.log"), working_dir_path: "/tmp/appsignal", push_api_endpoint: "https://push.appsignal.com/2/collect", push_api_key: "894d85ff-ac73-4ab8-8e94-21cd3c861487", environment: "development", app_name: Some("Portfolios"), language_integration_version: Some("ruby-2.11.0"), platform: None, transmission_interval: 30, http_proxy: None, ignore_actions: None, ignore_errors: None, ignore_namespaces: None, enable_host_metrics: true, enable_statsd: false, hostname: Some("clicktechlabs"), role: None, ca_file_path: Some("/home/clicktechlabs/.rvm/gems/ruby-2.6.3/gems/appsignal-2.11.0/resources/cacert.pem"), diagnose_mode: false, dns_servers: None, files_world_accessible: true, transaction_debug_mode: false, app_revision: None, process_name: "/home/clicktechlabs/.rvm/gems/ruby-2.6.3/appsignal", filter_data_keys: None, send_environment_metadata: true } (17829227877093019292)
+[2021-02-17T00:21:49 (agent) #21169][Info] Listening on /tmp/appsignal/agent.socket
+[2021-02-17T00:21:50 (process) #21163][INFO] appsignal: Loading Rails (6.0.3.5) integration
+[2021-02-17T00:21:50 (process) #21163][INFO] Starting AppSignal 2.11.0 (-e, Ruby 2.6.3, x86_64-linux)
+[2021-02-17T00:21:50 (process) #21163][INFO] Installing action_cable hook
+[2021-02-17T00:21:50 (process) #21163][INFO] Installing active_job hook
+[2021-02-17T00:21:50 (process) #21163][INFO] Installing active_support_notifications hook
+[2021-02-17T00:21:50 (process) #21163][INFO] Installing net_http hook
+[2021-02-17T00:21:50 (process) #21163][INFO] Installing puma hook
+[2021-02-17T00:21:50 (process) #21163][INFO] Installing redis hook
+[2021-02-17T00:21:50 (process) #21163][INFO] Installing sidekiq hook
+[2021-02-22T23:35:02 (process) #17801][INFO] appsignal: Loading Rails (6.0.3.5) integration
+[2021-02-22T23:35:03 (process) #17801][INFO] Starting AppSignal 2.11.0 (-e, Ruby 2.6.3, x86_64-linux)
+[2021-02-22T23:35:04 (process) #17801][INFO] Installing action_cable hook
+[2021-02-22T23:35:04 (process) #17801][INFO] Installing active_job hook
+[2021-02-22T23:35:04 (process) #17801][INFO] Installing active_support_notifications hook
+[2021-02-22T23:35:04 (process) #17801][INFO] Installing net_http hook
+[2021-02-22T23:35:04 (process) #17801][INFO] Installing puma hook
+[2021-02-22T23:35:04 (process) #17801][INFO] Installing redis hook
+[2021-02-22T23:35:04 (process) #17801][INFO] Installing sidekiq hook
+[2021-02-22T23:35:04 (agent) #17826][Info] Started appsignal-agent c8f8185 (as 1000/1000) Config { local_env: {}, active: true, agent_standalone: false, running_in_container: false, app_path: Some("/home/clicktechlabs/workspace/portfolios"), agent_path: Some("/home/clicktechlabs/.rvm/gems/ruby-2.6.3/gems/appsignal-2.11.0/ext"), debug_logging: false, log: File, log_file_path: Some("/home/clicktechlabs/workspace/portfolios/log/appsignal.log"), working_dir_path: "/tmp/appsignal", push_api_endpoint: "https://push.appsignal.com/2/collect", push_api_key: "894d85ff-ac73-4ab8-8e94-21cd3c861487", environment: "development", app_name: Some("Portfolios"), language_integration_version: Some("ruby-2.11.0"), platform: None, transmission_interval: 30, http_proxy: None, ignore_actions: None, ignore_errors: None, ignore_namespaces: None, enable_host_metrics: true, enable_statsd: false, hostname: Some("clicktechlabs"), role: None, ca_file_path: Some("/home/clicktechlabs/.rvm/gems/ruby-2.6.3/gems/appsignal-2.11.0/resources/cacert.pem"), diagnose_mode: false, dns_servers: None, files_world_accessible: true, transaction_debug_mode: false, app_revision: None, process_name: "-e", filter_data_keys: None, send_environment_metadata: true } (17829227877093019292)
+[2021-02-22T23:35:04 (agent) #17826][Info] Listening on /tmp/appsignal/agent.socket
+[2021-02-22T23:35:11 (process) #17841][INFO] appsignal: Loading Rails (6.0.3.5) integration
+[2021-02-22T23:35:12 (process) #17841][INFO] Starting AppSignal 2.11.0 (-e, Ruby 2.6.3, x86_64-linux)
+[2021-02-22T23:35:12 (process) #17841][INFO] Installing action_cable hook
+[2021-02-22T23:35:12 (process) #17841][INFO] Installing active_job hook
+[2021-02-22T23:35:12 (process) #17841][INFO] Installing active_support_notifications hook
+[2021-02-22T23:35:12 (process) #17841][INFO] Installing net_http hook
+[2021-02-22T23:35:12 (process) #17841][INFO] Installing puma hook
+[2021-02-22T23:35:12 (process) #17841][INFO] Installing redis hook
+[2021-02-22T23:35:12 (process) #17841][INFO] Installing sidekiq hook
+[2021-02-22T23:35:13 (agent) #17879][Info] Started appsignal-agent c8f8185 (as 1000/1000) Config { local_env: {}, active: true, agent_standalone: false, running_in_container: false, app_path: Some("/home/clicktechlabs/workspace/portfolios"), agent_path: Some("/home/clicktechlabs/.rvm/gems/ruby-2.6.3/gems/appsignal-2.11.0/ext"), debug_logging: false, log: File, log_file_path: Some("/home/clicktechlabs/workspace/portfolios/log/appsignal.log"), working_dir_path: "/tmp/appsignal", push_api_endpoint: "https://push.appsignal.com/2/collect", push_api_key: "894d85ff-ac73-4ab8-8e94-21cd3c861487", environment: "development", app_name: Some("Portfolios"), language_integration_version: Some("ruby-2.11.0"), platform: None, transmission_interval: 30, http_proxy: None, ignore_actions: None, ignore_errors: None, ignore_namespaces: None, enable_host_metrics: true, enable_statsd: false, hostname: Some("clicktechlabs"), role: None, ca_file_path: Some("/home/clicktechlabs/.rvm/gems/ruby-2.6.3/gems/appsignal-2.11.0/resources/cacert.pem"), diagnose_mode: false, dns_servers: None, files_world_accessible: true, transaction_debug_mode: false, app_revision: None, process_name: "-e", filter_data_keys: None, send_environment_metadata: true } (17829227877093019292)
+[2021-02-22T23:35:13 (agent) #17879][Info] Listening on /tmp/appsignal/agent.socket
+[2021-02-22T23:35:19 (process) #17898][INFO] appsignal: Loading Rails (6.0.3.5) integration
+[2021-02-22T23:35:19 (process) #17898][INFO] Starting AppSignal 2.11.0 (-e, Ruby 2.6.3, x86_64-linux)
+[2021-02-22T23:35:19 (process) #17898][INFO] Installing action_cable hook
+[2021-02-22T23:35:19 (process) #17898][INFO] Installing active_job hook
+[2021-02-22T23:35:19 (process) #17898][INFO] Installing active_support_notifications hook
+[2021-02-22T23:35:19 (process) #17898][INFO] Installing net_http hook
+[2021-02-22T23:35:19 (process) #17898][INFO] Installing puma hook
+[2021-02-22T23:35:19 (process) #17898][INFO] Installing redis hook
+[2021-02-22T23:35:19 (process) #17898][INFO] Installing sidekiq hook
+[2021-02-22T23:35:20 (agent) #17934][Info] Started appsignal-agent c8f8185 (as 1000/1000) Config { local_env: {}, active: true, agent_standalone: false, running_in_container: false, app_path: Some("/home/clicktechlabs/workspace/portfolios"), agent_path: Some("/home/clicktechlabs/.rvm/gems/ruby-2.6.3/gems/appsignal-2.11.0/ext"), debug_logging: false, log: File, log_file_path: Some("/home/clicktechlabs/workspace/portfolios/log/appsignal.log"), working_dir_path: "/tmp/appsignal", push_api_endpoint: "https://push.appsignal.com/2/collect", push_api_key: "894d85ff-ac73-4ab8-8e94-21cd3c861487", environment: "development", app_name: Some("Portfolios"), language_integration_version: Some("ruby-2.11.0"), platform: None, transmission_interval: 30, http_proxy: None, ignore_actions: None, ignore_errors: None, ignore_namespaces: None, enable_host_metrics: true, enable_statsd: false, hostname: Some("clicktechlabs"), role: None, ca_file_path: Some("/home/clicktechlabs/.rvm/gems/ruby-2.6.3/gems/appsignal-2.11.0/resources/cacert.pem"), diagnose_mode: false, dns_servers: None, files_world_accessible: true, transaction_debug_mode: false, app_revision: None, process_name: "-e", filter_data_keys: None, send_environment_metadata: true } (17829227877093019292)
+[2021-02-22T23:35:20 (agent) #17934][Info] Listening on /tmp/appsignal/agent.socket
+[2021-02-22T23:35:25 (process) #17945][INFO] appsignal: Loading Rails (6.0.3.5) integration
+[2021-02-22T23:35:26 (process) #17945][INFO] Starting AppSignal 2.11.0 (-e, Ruby 2.6.3, x86_64-linux)
+[2021-02-22T23:35:26 (process) #17945][INFO] Installing action_cable hook
+[2021-02-22T23:35:26 (process) #17945][INFO] Installing active_job hook
+[2021-02-22T23:35:26 (process) #17945][INFO] Installing active_support_notifications hook
+[2021-02-22T23:35:26 (process) #17945][INFO] Installing net_http hook
+[2021-02-22T23:35:26 (process) #17945][INFO] Installing puma hook
+[2021-02-22T23:35:26 (process) #17945][INFO] Installing redis hook
+[2021-02-22T23:35:26 (process) #17945][INFO] Installing sidekiq hook
+[2021-02-22T23:35:35 (process) #17968][INFO] appsignal: Loading Rails (6.0.3.5) integration
+[2021-02-22T23:35:36 (process) #17968][INFO] Starting AppSignal 2.11.0 (-e, Ruby 2.6.3, x86_64-linux)
+[2021-02-22T23:35:36 (process) #17968][INFO] Installing action_cable hook
+[2021-02-22T23:35:36 (process) #17968][INFO] Installing active_job hook
+[2021-02-22T23:35:36 (process) #17968][INFO] Installing active_support_notifications hook
+[2021-02-22T23:35:36 (process) #17968][INFO] Installing net_http hook
+[2021-02-22T23:35:36 (process) #17968][INFO] Installing puma hook
+[2021-02-22T23:35:36 (process) #17968][INFO] Installing redis hook
+[2021-02-22T23:35:36 (process) #17968][INFO] Installing sidekiq hook
+[2021-02-22T23:35:36 (agent) #17986][Info] Started appsignal-agent c8f8185 (as 1000/1000) Config { local_env: {}, active: true, agent_standalone: false, running_in_container: false, app_path: Some("/home/clicktechlabs/workspace/portfolios"), agent_path: Some("/home/clicktechlabs/.rvm/gems/ruby-2.6.3/gems/appsignal-2.11.0/ext"), debug_logging: false, log: File, log_file_path: Some("/home/clicktechlabs/workspace/portfolios/log/appsignal.log"), working_dir_path: "/tmp/appsignal", push_api_endpoint: "https://push.appsignal.com/2/collect", push_api_key: "894d85ff-ac73-4ab8-8e94-21cd3c861487", environment: "development", app_name: Some("Portfolios"), language_integration_version: Some("ruby-2.11.0"), platform: None, transmission_interval: 30, http_proxy: None, ignore_actions: None, ignore_errors: None, ignore_namespaces: None, enable_host_metrics: true, enable_statsd: false, hostname: Some("clicktechlabs"), role: None, ca_file_path: Some("/home/clicktechlabs/.rvm/gems/ruby-2.6.3/gems/appsignal-2.11.0/resources/cacert.pem"), diagnose_mode: false, dns_servers: None, files_world_accessible: true, transaction_debug_mode: false, app_revision: None, process_name: "-e", filter_data_keys: None, send_environment_metadata: true } (17829227877093019292)
+[2021-02-22T23:35:36 (agent) #17986][Info] Listening on /tmp/appsignal/agent.socket
+[2021-02-22T23:38:19 (process) #18295][INFO] appsignal: Loading Rails (6.0.3.5) integration
+[2021-02-22T23:38:19 (process) #18295][INFO] Starting AppSignal 2.11.0 (bin/rails, Ruby 2.6.3, x86_64-linux)
+[2021-02-22T23:38:19 (process) #18295][INFO] Installing action_cable hook
+[2021-02-22T23:38:19 (process) #18295][INFO] Installing active_job hook
+[2021-02-22T23:38:19 (process) #18295][INFO] Installing active_support_notifications hook
+[2021-02-22T23:38:19 (process) #18295][INFO] Installing net_http hook
+[2021-02-22T23:38:19 (process) #18295][INFO] Installing puma hook
+[2021-02-22T23:38:19 (process) #18295][INFO] Installing redis hook
+[2021-02-22T23:38:19 (process) #18295][INFO] Installing sidekiq hook
+[2021-02-23T00:03:27 (process) #21522][INFO] appsignal: Loading Rails (6.0.3.5) integration
+[2021-02-23T00:03:28 (process) #21522][INFO] Starting AppSignal 2.11.0 (-e, Ruby 2.6.3, x86_64-linux)
+[2021-02-23T00:03:28 (process) #21522][INFO] Installing action_cable hook
+[2021-02-23T00:03:28 (process) #21522][INFO] Installing active_job hook
+[2021-02-23T00:03:28 (process) #21522][INFO] Installing active_support_notifications hook
+[2021-02-23T00:03:28 (process) #21522][INFO] Installing net_http hook
+[2021-02-23T00:03:28 (process) #21522][INFO] Installing puma hook
+[2021-02-23T00:03:28 (process) #21522][INFO] Installing redis hook
+[2021-02-23T00:03:28 (process) #21522][INFO] Installing sidekiq hook
+[2021-02-23T00:03:28 (agent) #21539][Info] Started appsignal-agent c8f8185 (as 1000/1000) Config { local_env: {}, active: true, agent_standalone: false, running_in_container: false, app_path: Some("/home/clicktechlabs/workspace/portfolios"), agent_path: Some("/home/clicktechlabs/.rvm/gems/ruby-2.6.3/gems/appsignal-2.11.0/ext"), debug_logging: false, log: File, log_file_path: Some("/home/clicktechlabs/workspace/portfolios/log/appsignal.log"), working_dir_path: "/tmp/appsignal", push_api_endpoint: "https://push.appsignal.com/2/collect", push_api_key: "894d85ff-ac73-4ab8-8e94-21cd3c861487", environment: "development", app_name: Some("Portfolios"), language_integration_version: Some("ruby-2.11.0"), platform: None, transmission_interval: 30, http_proxy: None, ignore_actions: None, ignore_errors: None, ignore_namespaces: None, enable_host_metrics: true, enable_statsd: false, hostname: Some("murtazas-machine"), role: None, ca_file_path: Some("/home/clicktechlabs/.rvm/gems/ruby-2.6.3/gems/appsignal-2.11.0/resources/cacert.pem"), diagnose_mode: false, dns_servers: None, files_world_accessible: true, transaction_debug_mode: false, app_revision: None, process_name: "-e", filter_data_keys: None, send_environment_metadata: true } (3192241004015107416)
+[2021-02-23T00:03:28 (agent) #21539][Info] Listening on /tmp/appsignal/agent.socket

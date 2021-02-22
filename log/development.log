@@ -1,0 +1,275 @@
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE DATABASE "portfolios_development" ENCODING = 'unicode'[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE DATABASE "portfolios_test" ENCODING = 'unicode'[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1883966869708232925)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20210216191641)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (18.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "first_name" character varying, "last_name" character varying, "announcements_last_read_at" timestamp, "admin" boolean DEFAULT FALSE, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[36mprimary::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210216191641"]]
+  [1m[35m (3.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAnnouncements (20210216191746)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (11.8ms)[0m  [1m[35mCREATE TABLE "announcements" ("id" bigserial primary key, "published_at" timestamp, "announcement_type" character varying, "name" character varying, "description" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210216191746"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateNotifications (20210216191751)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.0ms)[0m  [1m[35mCREATE TABLE "notifications" ("id" bigserial primary key, "recipient_type" character varying NOT NULL, "recipient_id" bigint NOT NULL, "type" character varying NOT NULL, "params" jsonb, "read_at" timestamp, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE  INDEX  "index_notifications_on_recipient_type_and_recipient_id" ON "notifications"  ("recipient_type", "recipient_id")[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE  INDEX  "index_notifications_on_read_at" ON "notifications"  ("read_at")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210216191751"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateServices (20210216191756)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (11.0ms)[0m  [1m[35mCREATE TABLE "services" ("id" bigserial primary key, "user_id" bigint NOT NULL, "provider" character varying, "uid" character varying, "access_token" character varying, "access_token_secret" character varying, "refresh_token" character varying, "expires_at" timestamp, "auth" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_51a813203f"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE  INDEX  "index_services_on_user_id" ON "services"  ("user_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210216191756"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateFriendlyIdSlugs (20210216191801)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (10.4ms)[0m  [1m[35mCREATE TABLE "friendly_id_slugs" ("id" bigserial primary key, "slug" character varying NOT NULL, "sluggable_id" integer NOT NULL, "sluggable_type" character varying(50), "scope" character varying, "created_at" timestamp)[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE  INDEX  "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id" ON "friendly_id_slugs"  ("sluggable_type", "sluggable_id")[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE  INDEX  "index_friendly_id_slugs_on_slug_and_sluggable_type" ON "friendly_id_slugs"  ("slug", "sluggable_type")[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope" ON "friendly_id_slugs"  ("slug", "sluggable_type", "scope")[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210216191801"]]
+  [1m[35m (3.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateActiveStorageTables (20210216191810)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (13.3ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  [1m[35m (16.0ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  [1m[35m (6.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210216191810"]]
+  [1m[35m (3.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1883966869708232925)[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2021-02-17 00:20:17 +0500
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 3.1ms | Allocations: 367)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/clicktechlabs/workspace/portfolios/public/packs
+[Webpacker] Hash: 8ff7d63c88521f6b3ffc
+Version: webpack 4.46.0
+Time: 5867ms
+Built at: 02/17/2021 12:20:29 AM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-dccd8dec788de1c0a4eb.js    691 KiB  application  [emitted] [immutable]  application
+js/application-dccd8dec788de1c0a4eb.js.map    806 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-dccd8dec788de1c0a4eb.js js/application-dccd8dec788de1c0a4eb.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 658 bytes {application} [built]
+[./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 905 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 8 hidden modules
+
+  Rendered shared/_head.html.erb (Duration: 12134.0ms | Allocations: 317972)
+  [1m[36mAnnouncement Load (0.5ms)[0m  [1m[34mSELECT "announcements".* FROM "announcements" ORDER BY "announcements"."published_at" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/helpers/announcements_helper.rb:3:in `unread_announcements'
+  Rendered shared/_navbar.html.erb (Duration: 11.7ms | Allocations: 2666)
+  Rendered shared/_notices.html.erb (Duration: 0.5ms | Allocations: 175)
+  Rendered shared/_footer.html.erb (Duration: 0.8ms | Allocations: 204)
+Completed 200 OK in 12194ms (Views: 12171.0ms | ActiveRecord: 2.6ms | Allocations: 326966)
+
+
+Started GET "/users/sign_up" for ::1 at 2021-02-17 00:20:33 +0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.0ms | Allocations: 213)
+  Rendered devise/shared/_links.html.erb (Duration: 1.3ms | Allocations: 563)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 10.5ms | Allocations: 3079)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_head.html.erb (Duration: 13.9ms | Allocations: 9833)
+  [1m[36mAnnouncement Load (0.4ms)[0m  [1m[34mSELECT "announcements".* FROM "announcements" ORDER BY "announcements"."published_at" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/helpers/announcements_helper.rb:3:in `unread_announcements'
+  Rendered shared/_navbar.html.erb (Duration: 3.5ms | Allocations: 981)
+  Rendered shared/_notices.html.erb (Duration: 0.1ms | Allocations: 17)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 54)
+Completed 200 OK in 76ms (Views: 32.1ms | ActiveRecord: 9.0ms | Allocations: 25528)
+
+
+Started GET "/users/sign_in" for ::1 at 2021-02-17 00:20:34 +0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.2ms | Allocations: 224)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 11.4ms | Allocations: 1560)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_head.html.erb (Duration: 19.3ms | Allocations: 9831)
+  [1m[36mAnnouncement Load (0.3ms)[0m  [1m[34mSELECT "announcements".* FROM "announcements" ORDER BY "announcements"."published_at" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/helpers/announcements_helper.rb:3:in `unread_announcements'
+  Rendered shared/_navbar.html.erb (Duration: 2.6ms | Allocations: 985)
+  Rendered shared/_notices.html.erb (Duration: 0.1ms | Allocations: 17)
+  Rendered shared/_footer.html.erb (Duration: 0.2ms | Allocations: 54)
+Completed 200 OK in 39ms (Views: 36.5ms | ActiveRecord: 0.3ms | Allocations: 14490)
+
+
+Started GET "/" for ::1 at 2021-02-22 23:38:38 +0500
+  [1m[35m (3.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 4.3ms | Allocations: 206)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_head.html.erb (Duration: 332.7ms | Allocations: 53734)
+  [1m[36mAnnouncement Load (1.3ms)[0m  [1m[34mSELECT "announcements".* FROM "announcements" ORDER BY "announcements"."published_at" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/helpers/announcements_helper.rb:3:in `unread_announcements'
+  Rendered shared/_navbar.html.erb (Duration: 16.8ms | Allocations: 2629)
+  Rendered shared/_notices.html.erb (Duration: 1.0ms | Allocations: 177)
+  Rendered shared/_footer.html.erb (Duration: 2.2ms | Allocations: 206)
+Completed 200 OK in 391ms (Views: 368.9ms | ActiveRecord: 4.4ms | Allocations: 61370)
+
+
+Started GET "/" for ::1 at 2021-02-22 23:38:41 +0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 6)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_head.html.erb (Duration: 29.1ms | Allocations: 10048)
+  [1m[36mAnnouncement Load (0.9ms)[0m  [1m[34mSELECT "announcements".* FROM "announcements" ORDER BY "announcements"."published_at" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/helpers/announcements_helper.rb:3:in `unread_announcements'
+  Rendered shared/_navbar.html.erb (Duration: 4.6ms | Allocations: 1045)
+  Rendered shared/_notices.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered shared/_footer.html.erb (Duration: 0.2ms | Allocations: 53)
+Completed 200 OK in 39ms (Views: 37.0ms | ActiveRecord: 0.9ms | Allocations: 12029)
+
+
+Started GET "/announcements" for ::1 at 2021-02-22 23:38:42 +0500
+Processing by AnnouncementsController#index as HTML
+  Rendering announcements/index.html.erb within layouts/application
+  [1m[36mAnnouncement Load (0.3ms)[0m  [1m[34mSELECT "announcements".* FROM "announcements" ORDER BY "announcements"."published_at" DESC[0m
+  ↳ app/views/announcements/index.html.erb:5:in `each_with_index'
+  Rendered announcements/index.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1036)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_head.html.erb (Duration: 15.2ms | Allocations: 10048)
+  [1m[36mAnnouncement Load (0.5ms)[0m  [1m[34mSELECT "announcements".* FROM "announcements" ORDER BY "announcements"."published_at" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/helpers/announcements_helper.rb:3:in `unread_announcements'
+  Rendered shared/_navbar.html.erb (Duration: 7.8ms | Allocations: 987)
+  Rendered shared/_notices.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 55)
+Completed 200 OK in 32ms (Views: 29.3ms | ActiveRecord: 0.8ms | Allocations: 14145)
+
+
+Started GET "/users/sign_in" for ::1 at 2021-02-22 23:38:42 +0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.9ms | Allocations: 657)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 9.2ms | Allocations: 2323)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_head.html.erb (Duration: 26.2ms | Allocations: 10021)
+  [1m[36mAnnouncement Load (0.3ms)[0m  [1m[34mSELECT "announcements".* FROM "announcements" ORDER BY "announcements"."published_at" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/helpers/announcements_helper.rb:3:in `unread_announcements'
+  Rendered shared/_navbar.html.erb (Duration: 3.1ms | Allocations: 1007)
+  Rendered shared/_notices.html.erb (Duration: 0.8ms | Allocations: 18)
+  Rendered shared/_footer.html.erb (Duration: 0.2ms | Allocations: 55)
+Completed 200 OK in 96ms (Views: 43.9ms | ActiveRecord: 10.6ms | Allocations: 24887)
+
+
+Started GET "/users/sign_up" for ::1 at 2021-02-22 23:38:44 +0500
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.7ms | Allocations: 214)
+  Rendered devise/shared/_links.html.erb (Duration: 1.6ms | Allocations: 135)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 17.5ms | Allocations: 1568)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_head.html.erb (Duration: 42.0ms | Allocations: 10019)
+  [1m[36mAnnouncement Load (0.4ms)[0m  [1m[34mSELECT "announcements".* FROM "announcements" ORDER BY "announcements"."published_at" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/helpers/announcements_helper.rb:3:in `unread_announcements'
+  Rendered shared/_navbar.html.erb (Duration: 6.0ms | Allocations: 1010)
+  Rendered shared/_notices.html.erb (Duration: 0.1ms | Allocations: 18)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 55)
+Completed 200 OK in 88ms (Views: 84.8ms | ActiveRecord: 0.4ms | Allocations: 14753)
+
+
+Started POST "/users" for ::1 at 2021-02-22 23:39:06 +0500
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"dDKxKO/qGBAaOgwgXGv7ENVXcWK6MeletIrcgxxkCh8L0jCY2Uo3qNGQv2DgShVbI0SZcwmAf5Eio0N6/R2l4A==", "user"=>{"name"=>"Murtaza Khan", "email"=>"murtaza@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (2.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "murtaza@gmail.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "first_name", "last_name", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "murtaza@gmail.com"], ["encrypted_password", "$2a$12$y2TgYKFKtA3t/w1J/bHeZ.X6j2OPGfSMrzVh27mF1AfOI.VM2j3km"], ["first_name", "Murtaza"], ["last_name", "Khan"], ["created_at", "2021-02-22 18:39:06.678663"], ["updated_at", "2021-02-22 18:39:06.678663"]]
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 339ms (ActiveRecord: 7.6ms | Allocations: 29197)
+
+
+Started GET "/" for ::1 at 2021-02-22 23:39:06 +0500
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 5)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_head.html.erb (Duration: 16.3ms | Allocations: 10045)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/shared/_navbar.html.erb:21
+  [1m[36mAnnouncement Load (0.3ms)[0m  [1m[34mSELECT "announcements".* FROM "announcements" ORDER BY "announcements"."published_at" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/helpers/announcements_helper.rb:3:in `unread_announcements'
+  [1m[36mActiveStorage::Attachment Load (1.8ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:17:in `avatar_path'
+  Rendered shared/_navbar.html.erb (Duration: 27.7ms | Allocations: 8590)
+  Rendered shared/_notices.html.erb (Duration: 0.1ms | Allocations: 32)
+  Rendered shared/_footer.html.erb (Duration: 0.1ms | Allocations: 55)
+Completed 200 OK in 47ms (Views: 40.9ms | ActiveRecord: 5.0ms | Allocations: 19610)
+
+
+Started GET "/users/edit" for ::1 at 2021-02-22 23:39:13 +0500
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/registrations/edit.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.1ms | Allocations: 16)
+  [1m[36mActiveStorage::Attachment Load (0.8ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/helpers/application_helper.rb:17:in `avatar_path'
+  Rendered devise/registrations/edit.html.erb within layouts/application (Duration: 18.5ms | Allocations: 3366)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered shared/_head.html.erb (Duration: 22.0ms | Allocations: 10044)
+  [1m[36mAnnouncement Load (0.4ms)[0m  [1m[34mSELECT "announcements".* FROM "announcements" ORDER BY "announcements"."published_at" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/helpers/announcements_helper.rb:3:in `unread_announcements'
+  Rendered shared/_navbar.html.erb (Duration: 3.7ms | Allocations: 1095)
+  Rendered shared/_notices.html.erb (Duration: 0.2ms | Allocations: 18)
+  Rendered shared/_footer.html.erb (Duration: 0.3ms | Allocations: 55)
+Completed 200 OK in 67ms (Views: 48.4ms | ActiveRecord: 1.9ms | Allocations: 17190)
+
+
+Started GET "/accounts" for ::1 at 2021-02-22 23:41:35 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/accounts"):
+  
+actionpack (6.0.3.5) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.5) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.5) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.5) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.5) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.5) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.5) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
