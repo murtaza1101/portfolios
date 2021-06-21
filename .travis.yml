@@ -1,0 +1,10 @@
+os: linux
+arch: ppc64le
+rvm: 2.6.3
+jobs:
+  include:
+    - stage: "sleep"
+      script: sleep 10
+notifications:
+  email:
+    - murtaza5370@gmail.com
